@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Sandesh Sharma · Resume (A4 Print Ready)</title>
+
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: #f3ecff;
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #1f1235;
+      line-height: 1.4;
+    }
+
+    .resume {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 12px 30px -8px rgba(80, 40, 140, 0.2);
+      border: 1px solid #d9c8ff;
+      margin-bottom: 1rem;
+    }
+
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: linear-gradient(135deg, #6a3de8, #a884ff);
+      color: #fff;
+      border: none;
+      border-radius: 60px;
+      padding: 0.9rem 1.8rem;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 12px 28px -6px rgba(106, 61, 232, 0.5);
+      cursor: pointer;
+      transition: 0.2s;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .print-btn:hover { transform: scale(1.03); background: #5b2fd0; }
+    .print-btn i { font-size: 1.1rem; }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.4rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2d4ff;
+    }
+
+    .hero-left { display: flex; align-items: center; gap: 1.4rem; flex: 2 1 380px; }
+
+    .profile-img {
+      width: 110px; height: 110px;
+      border-radius: 30% 15% 30% 15% / 15% 30% 15% 30%;
+      border: 2px solid #a884ff;
+      object-fit: cover;
+      background: #ede4ff;
+      box-shadow: 0 6px 18px rgba(106, 61, 232, 0.2);
+      padding: 2px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .profile-img:hover { transform: scale(1.03) rotate(1deg); border-color: #6a3de8; }
+
+    .hero-text h1 {
+      font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent; line-height: 1.2; margin-bottom: 2px;
+    }
+    .hero-text .role { font-size: 0.95rem; font-weight: 600; color: #5b3b9e; margin-bottom: 4px; }
+    .hero-text .address {
+      font-size: 0.8rem; display: flex; align-items: center; gap: 6px;
+      color: #3b1f7a; background: #ede4ff; padding: 0.25rem 0.9rem;
+      border-radius: 30px; width: fit-content; border: 1px solid #cbb4ff;
+      transition: background 0.2s;
+    }
+    .hero-text .address:hover { background: #e0d0ff; }
+    .hero-text .address i { color: #6a3de8; font-size: 0.75rem; }
+
+    .hero-right { flex: 1 1 200px; display: flex; justify-content: flex-end; gap: 0.8rem; flex-wrap: wrap; }
+
+    .contact-mini {
+      background: #f6f0ff; padding: 0.5rem 1rem; border-radius: 30px;
+      border: 1px solid #d9c8ff; font-size: 0.8rem; display: flex;
+      align-items: center; gap: 8px; font-weight: 500; color: #2c1a4e;
+      transition: all 0.2s ease; cursor: default;
+    }
+    .contact-mini:hover {
+      background: #ede4ff; border-color: #a884ff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(106, 61, 232, 0.15);
+    }
+    .contact-mini i { color: #6a3de8; width: 16px; font-size: 0.85rem; }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-size: 1.15rem; font-weight: 800; color: #2c1a4e;
+      margin: 1rem 0 0.6rem 0; display: flex; align-items: center; gap: 8px;
+      border-bottom: 2px solid #d9c8ff; padding-bottom: 4px;
+    }
+    .section-title i { color: #6a3de8; font-size: 1rem; }
+
+    /* TAGS */
+    .tag-grid { display: flex; flex-wrap: wrap; gap: 0.5rem 0.7rem; margin-bottom: 0.6rem; }
+    .tag {
+      background: #f2eaff; border: 1px solid #cbb4ff; color: #2c1a4e;
+      padding: 0.35rem 1rem; border-radius: 40px; font-size: 0.8rem;
+      font-weight: 600; display: inline-flex; align-items: center; gap: 5px;
+      transition: all 0.2s ease; cursor: default;
+    }
+    .tag i { color: #6a3de8; font-size: 0.75rem; transition: color 0.2s; }
+    .tag:hover {
+      background: linear-gradient(135deg, #6a3de8, #a884ff); color: #fff;
+      border-color: transparent; transform: translateY(-3px);
+      box-shadow: 0 8px 18px -6px rgba(106, 61, 232, 0.5);
+    }
+    .tag:hover i { color: #fff; }
+
+    /* TEXT BLOCK */
+    .text-block {
+      background: #faf7ff; border-left: 6px solid #6a3de8;
+      padding: 0.7rem 1.2rem; border-radius: 0 16px 16px 0;
+      font-size: 0.9rem; color: #2c1a4e; margin-bottom: 0.8rem;
+      line-height: 1.5; transition: background 0.2s;
+    }
+    .text-block:hover { background: #f5edff; }
+
+    /* INFO GRID */
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem 1.2rem; font-size: 0.85rem; background: #faf7ff;
+      padding: 0.8rem 1.2rem; border-radius: 16px;
+      border: 1px solid #e2d4ff; transition: box-shadow 0.2s;
+    }
+    .info-grid:hover { box-shadow: 0 6px 20px rgba(106, 61, 232, 0.08); }
+
+    .info-item { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; transition: transform 0.15s; }
+    .info-item:hover { transform: translateX(3px); }
+    .info-item strong {
+      font-weight: 700; color: #3b1f7a; min-width: 95px;
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px;
+    }
+    .info-item strong i { color: #6a3de8; margin-right: 4px; font-size: 0.7rem; }
+    .info-item span { color: #1f1235; font-weight: 500; }
+
+    /* CONTACT ROW */
+    .contact-row {
+      display: flex; flex-wrap: wrap; gap: 0.8rem 2rem;
+      background: #f2eaff; padding: 0.7rem 1.2rem; border-radius: 16px;
+      border: 1px solid #d9c8ff; font-size: 0.85rem; font-weight: 500;
+      margin-top: 0.4rem; transition: background 0.2s;
+    }
+    .contact-row:hover { background: #ede4ff; }
+    .contact-row span { display: flex; align-items: center; gap: 6px; transition: transform 0.15s; cursor: default; }
+    .contact-row span:hover { transform: translateY(-2px); }
+    .contact-row span i { color: #6a3de8; width: 18px; }
+
+    /* DECLARATION */
+    .declaration {
+      font-style: italic; background: #f2eaff; padding: 0.6rem 1.2rem;
+      border-radius: 12px; font-size: 0.85rem; border-left: 6px solid #6a3de8;
+      margin-top: 0.3rem; transition: background 0.2s;
+    }
+    .declaration:hover { background: #ede4ff; }
+
+    /* FOOTER */
+    .footer-note {
+      text-align: center; font-size: 0.75rem; color: #6a3de8;
+      margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dashed #cbb4ff;
+    }
+
+    /* ============================================================
+       PRINT STYLES – A4 FULL PAGE, SAB KUCH SPREAD HO JAYE
+       ============================================================ */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0.4cm 0.5cm;
+      }
+
+      html, body {
+        width: 100% !important;
+        height: 100% !important;
+        background: #fff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #000 !important;
+      }
+
+      body { display: block !important; }
+
+      .resume {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 28.5cm !important;          /* A4 ki puri height */
+        min-height: 28.5cm !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0.3cm 0.4cm !important;
+        background: #fff !important;
+        backdrop-filter: none !important;
+        margin: 0 !important;
+
+        /* Har section ke beech space distribute */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+
+      .print-btn { display: none !important; }
+
+      /* ---- HERO ---- */
+      .hero {
+        gap: 1rem !important;
+        margin-bottom: 0.4rem !important;
+        padding-bottom: 0.6rem !important;
+        border-bottom: 2.5px solid #999 !important;
+        flex-wrap: nowrap !important;
+      }
+
+      .hero-left { gap: 1.2rem !important; flex: 1 1 auto !important; }
+
+      .profile-img {
+        width: 100px !important;
+        height: 100px !important;
+        border: 2px solid #555 !important;
+        box-shadow: none !important;
+        background: #eee !important;
+        padding: 2px !important;
+        border-radius: 25% 12% 25% 12% / 12% 25% 12% 25% !important;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem !important;
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        background: none !important;
+        background-clip: unset !important;
+        line-height: 1.1 !important;
+      }
+
+      .hero-text .role { color: #222 !important; font-size: 0.9rem !important; margin-bottom: 4px !important; }
+
+      .hero-text .address {
+        background: #f0f0f0 !important;
+        border: 1px solid #bbb !important;
+        color: #000 !important;
+        padding: 0.25rem 0.9rem !important;
+        font-size: 0.72rem !important;
+        border-radius: 20px !important;
+      }
+      .hero-text .address i { color: #000 !important; font-size: 0.65rem !important; }
+
+      .hero-right { gap: 0.5rem !important; flex: 0 1 auto !important; }
+
+      .contact-mini {
+        background: #f2f2f2 !important;
+        border: 1px solid #bbb !important;
+        color: #000 !important;
+        font-size: 0.72rem !important;
+        padding: 0.25rem 0.8rem !important;
+        border-radius: 20px !important;
+      }
+      .contact-mini i { color: #000 !important; font-size: 0.68rem !important; width: 13px !important; }
+
+      /* ---- SECTION TITLES ---- */
+      .section-title {
+        font-size: 1.1rem !important;
+        margin: 0.5rem 0 0.4rem 0 !important;
+        padding-bottom: 3px !important;
+        border-bottom: 2px solid #666 !important;
+        color: #000 !important;
+        gap: 7px !important;
+      }
+      .section-title i { color: #000 !important; font-size: 0.95rem !important; }
+
+      /* ---- TAGS ---- */
+      .tag-grid { gap: 0.4rem 0.55rem !important; margin-bottom: 0.3rem !important; }
+
+      .tag {
+        background: #f0f0f0 !important;
+        border: 1px solid #aaa !important;
+        color: #000 !important;
+        padding: 0.3rem 0.95rem !important;
+        font-size: 0.8rem !important;
+        border-radius: 25px !important;
+        gap: 5px !important;
+      }
+      .tag i { color: #000 !important; font-size: 0.72rem !important; }
+      .tag:hover { background: #f0f0f0 !important; color: #000 !important; transform: none !important; box-shadow: none !important; }
+
+      /* ---- TEXT BLOCK ---- */
+      .text-block {
+        background: #f7f7f7 !important;
+        border-left: 5px solid #333 !important;
+        color: #000 !important;
+        font-size: 0.88rem !important;
+        padding: 0.7rem 1rem !important;
+        border-radius: 0 12px 12px 0 !important;
+        margin-bottom: 0.3rem !important;
+        line-height: 1.6 !important;
+      }
+
+      /* ---- INFO GRID – 2 columns ---- */
+      .info-grid {
+        background: #f7f7f7 !important;
+        border: 1px solid #aaa !important;
+        padding: 0.8rem 1.1rem !important;
+        gap: 0.6rem 1.8rem !important;
+        font-size: 0.85rem !important;
+        border-radius: 12px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .info-item { gap: 6px !important; }
+      .info-item strong { color: #000 !important; font-size: 0.75rem !important; min-width: 105px !important; }
+      .info-item strong i { color: #000 !important; font-size: 0.68rem !important; margin-right: 3px !important; }
+      .info-item span { font-size: 0.85rem !important; }
+
+      /* ---- CONTACT ROW ---- */
+      .contact-row {
+        background: #f2f2f2 !important;
+        border: 1px solid #aaa !important;
+        padding: 0.7rem 1.1rem !important;
+        font-size: 0.85rem !important;
+        gap: 0.5rem 1.5rem !important;
+        border-radius: 12px !important;
+        flex-direction: column !important;
+      }
+      .contact-row span i { color: #000 !important; font-size: 0.8rem !important; width: 18px !important; }
+
+      /* ---- DECLARATION ---- */
+      .declaration {
+        background: #f2f2f2 !important;
+        border-left: 5px solid #333 !important;
+        font-size: 0.85rem !important;
+        padding: 0.7rem 1.1rem !important;
+        border-radius: 10px !important;
+        margin-top: 0.3rem !important;
+        line-height: 1.6 !important;
+      }
+
+      /* ---- FOOTER ---- */
+      .footer-note {
+        color: #222 !important;
+        font-size: 0.75rem !important;
+        border-top: 2px dashed #999 !important;
+        margin-top: 0.3rem !important;
+        padding-top: 0.6rem !important;
+      }
+
+      /* Reset hovers */
+      .profile-img:hover, .contact-mini:hover, .tag:hover, .text-block:hover,
+      .info-grid:hover, .info-item:hover, .contact-row:hover,
+      .contact-row span:hover, .declaration:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .resume { padding: 1rem; }
+      .hero-left { flex-wrap: wrap; gap: 1rem; }
+      .hero-text h1 { font-size: 1.6rem; }
+      .hero-right { justify-content: flex-start; }
+      .info-grid { grid-template-columns: 1fr; }
+      .print-btn { padding: 0.7rem 1.4rem; font-size: 0.9rem; bottom: 16px; right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume">
+
+    <div class="hero">
+      <div class="hero-left">
+        <img class="profile-img" src="resumepic.jpg" alt="Sandesh Sharma" />
+        <div class="hero-text">
+          <h1>Sandesh Sharma</h1>
+          <div class="role">Computer Operator · Web Developer · Graphics Designer</div>
+          <div class="address">
+            <i class="fas fa-map-marker-alt"></i> Haraiya Khurd, Horlapur, Padrauna, Kushinagar, U.P. - 274304
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="contact-mini"><i class="fas fa-phone-alt"></i> +91 9169578612</div>
+        <div class="contact-mini"><i class="fas fa-envelope"></i> sandesh9169sharma@gmail.com</div>
+      </div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-bullseye"></i> Career Objective</div>
+    <div class="text-block">
+      To achieve success by applying my academic and functional knowledge with sincerity, dedication, and commitment. I aim to contribute effectively to the organization's growth while continuously developing my skills and abilities.
+    </div>
+
+    <div class="section-title"><i class="fas fa-certificate"></i> Professional Courses</div>
+    <div class="tag-grid">
+      <span class="tag"><i class="fas fa-graduation-cap"></i> ADCA</span>
+      <span class="tag"><i class="fas fa-graduation-cap"></i> DCA</span>
+      <span class="tag"><i class="fas fa-calculator"></i> Tally Prime</span>
+      <span class="tag"><i class="fas fa-palette"></i> Graphics Design</span>
+      <span class="tag"><i class="fas fa-laptop-code"></i> Web Design</span>
+      <span class="tag"><i class="fab fa-python"></i> Python</span>
+      <span class="tag"><i class="fab fa-java"></i> Java</span>
+      <span class="tag"><i class="fas fa-code"></i> C++</span>
+    </div>
+
+    <div class="section-title"><i class="fas fa-star"></i> Skills</div>
+    <div class="tag-grid">
+      <span class="tag"><i class="fas fa-desktop"></i> Advanced Computer Knowledge</span>
+      <span class="tag"><i class="fas fa-comments"></i> Communication Skills</span>
+      <span class="tag"><i class="fas fa-code"></i> Web Development</span>
+      <span class="tag"><i class="fas fa-paint-brush"></i> Web Design</span>
+      <span class="tag"><i class="fab fa-python"></i> Python Programming</span>
+      <span class="tag"><i class="fab fa-java"></i> Java Programming</span>
+      <span class="tag"><i class="fas fa-code"></i> C++ Programming</span>
+      <span class="tag"><i class="fas fa-palette"></i> Graphics Designing</span>
+      <span class="tag"><i class="fas fa-language"></i> Hindi Language</span>
+      <span class="tag"><i class="fas fa-language"></i> English Language</span>
+      <span class="tag"><i class="fas fa-rocket"></i> Quick Learner</span>
+      <span class="tag"><i class="fas fa-users"></i> Teamwork</span>
+    </div>
+
+    <div class="section-title"><i class="fas fa-user-circle"></i> Personal Information</div>
+    <div class="info-grid">
+      <div class="info-item"><strong><i class="fas fa-birthday-cake"></i> Date of Birth</strong> <span>16 April 2007</span></div>
+      <div class="info-item"><strong><i class="fas fa-male"></i> Father's Name</strong> <span>Anirudh Sharma</span></div>
+      <div class="info-item"><strong><i class="fas fa-female"></i> Mother's Name</strong> <span>Tetari Devi</span></div>
+      <div class="info-item"><strong><i class="fas fa-flag"></i> Nationality</strong> <span>Indian</span></div>
+      <div class="info-item"><strong><i class="fas fa-heart"></i> Marital Status</strong> <span>Unmarried</span></div>
+      <div class="info-item"><strong><i class="fas fa-language"></i> Languages</strong> <span>Hindi &amp; English</span></div>
+      <div class="info-item"><strong><i class="fas fa-venus-mars"></i> Gender</strong> <span>Male</span></div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-address-card"></i> Contact</div>
+    <div class="contact-row">
+      <span><i class="fas fa-phone-alt"></i> +91 9169578612</span>
+      <span><i class="fas fa-envelope"></i> sandesh9169sharma@gmail.com</span>
+      <span><i class="fas fa-map-marker-alt"></i> Haraiya Khurd, Horlapur, Padrauna, Kushinagar, U.P. - 274304</span>
+    </div>
+
+    <div class="section-title"><i class="fas fa-file-signature"></i> Declaration</div>
+    <div class="declaration">
+      I hereby declare that the information provided above is true and correct to the best of my knowledge and belief.
+    </div>
+
+    <div class="footer-note">
+      © 2026 Sandesh Sharma · Portfolio Resume · Designed with <i class="fas fa-heart" style="color:#ef4444;"></i> by Sandesh Sharma
+    </div>
+
+  </div>
+
+  <button class="print-btn" onclick="window.print()">
+    <i class="fas fa-print"></i> Print / Save as PDF
+  </button>
+
+</body>
+</html>

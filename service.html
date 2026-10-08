@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>My Services · Sandesh Sharma</title>
+
+  <!-- ✅ FAVICON -->
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f8f0ff 0%, #f0e6ff 100%);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---------- HEADER CARD ---------- */
+    .header-card {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 56px 40px 56px 40px;
+      padding: 2.2rem 2.4rem 2rem;
+      box-shadow: 0 30px 60px -15px rgba(90, 40, 140, 0.25),
+                  0 0 0 1px rgba(200, 170, 255, 0.25) inset;
+      border: 1px solid rgba(220, 200, 255, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-card::before {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(168, 132, 255, 0.18) 0%, transparent 70%);
+      top: -140px;
+      right: -120px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .header-card::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(106, 61, 232, 0.12) 0%, transparent 70%);
+      bottom: -100px;
+      left: -80px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatOrb 16s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.15); }
+    }
+
+    .header-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ---------- ANIMATED LOGO ---------- */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #6a3de8 0%, #a884ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 22px rgba(106, 61, 232, 0.35),
+                  0 0 0 3px rgba(255, 255, 255, 0.6) inset;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-icon:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .logo-icon i {
+      color: #fff;
+      font-size: 24px;
+      z-index: 2;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .logo-icon .fa-bolt {
+      position: absolute;
+      font-size: 11px !important;
+      color: #ffd700 !important;
+      top: 6px;
+      right: 6px;
+      z-index: 3;
+      filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8)) !important;
+      animation: zap 2s infinite;
+    }
+
+    @keyframes zap {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- TITLE ---------- */
+    .title h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+      line-height: 1.1;
+    }
+
+    .title p {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+      color: #5b3b9e;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      background: #ede4ff;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      border: 1.5px solid rgba(200, 170, 255, 0.5);
+    }
+
+    .title p i { color: #6a3de8; }
+
+    /* ---------- GRID ---------- */
+    .grid {
+      max-width: 1300px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---------- CARD ---------- */
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(220, 200, 255, 0.4);
+      border-radius: 40px 20px 40px 20px;
+      padding: 2rem 1.5rem 1.8rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      overflow: hidden;
+      cursor: default;
+      box-shadow: 0 20px 40px -15px rgba(90, 40, 140, 0.15),
+                  0 0 0 1px rgba(200, 170, 255, 0.2) inset;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* inner glow pulse */
+    .card::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(168, 132, 255, 0.12) 0%, transparent 70%);
+      top: -120px;
+      right: -120px;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: 0.6s;
+    }
+
+    .card:hover::after {
+      transform: scale(1.5);
+      opacity: 0.85;
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 60px -15px rgba(106, 61, 232, 0.35),
+                  0 0 0 1px rgba(168, 132, 255, 0.35) inset;
+      border-color: #a884ff;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    /* ---------- ICON ---------- */
+    .icon {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 1.2rem;
+      border-radius: 40% 20% 40% 20% / 20% 40% 20% 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 34px;
+      background: linear-gradient(145deg, #6a3de8, #a884ff);
+      color: #fff;
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      box-shadow: 0 12px 28px -10px rgba(106, 61, 232, 0.5),
+                  0 0 0 3px rgba(255, 255, 255, 0.5) inset;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+    }
+
+    .card:hover .icon {
+      transform: rotate(360deg) scale(1.1);
+      box-shadow: 0 18px 40px -10px rgba(106, 61, 232, 0.7),
+                  0 0 0 3px rgba(255, 255, 255, 0.7) inset;
+    }
+
+    /* ---------- TEXT ---------- */
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #2c1a4e;
+      letter-spacing: 0.3px;
+      transition: 0.3s;
+    }
+
+    .card:hover h2 {
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #5b3b9e;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .card:hover p {
+      color: #3b1f7a;
+    }
+
+    /* ---------- GLOW LINE ---------- */
+    .card .glow-line {
+      position: absolute;
+      left: 15%;
+      bottom: 12px;
+      width: 70%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #6a3de8, #a884ff, transparent);
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: scaleX(0.2);
+    }
+
+    .card:hover .glow-line {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* ---------- SHINE ---------- */
+    .card .shine {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.8s;
+    }
+
+    .card:hover .shine {
+      opacity: 0.15;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .page-footer {
+      max-width: 1300px;
+      width: 100%;
+      text-align: center;
+      padding: 1.4rem 1.5rem;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 40px;
+      border: 1px solid rgba(220, 200, 255, 0.4);
+      box-shadow: 0 12px 28px -10px rgba(80, 40, 160, 0.1);
+      color: #7a5fa8;
+      font-size: 0.88rem;
+    }
+
+    .page-footer .heart {
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+      color: #ef4444;
+    }
+
+    .page-footer i { color: #6a3de8; }
+    .page-footer .heart i { color: #ef4444; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+
+      .header-card {
+        padding: 1.6rem 1.4rem;
+        border-radius: 40px 28px 40px 28px;
+      }
+
+      .title h1 { font-size: 2rem; }
+      .title p { font-size: 0.72rem; padding: 0.35rem 1rem; letter-spacing: 0.8px; }
+      .logo-icon { width: 46px; height: 46px; border-radius: 14px; }
+      .logo-icon i { font-size: 20px; }
+      .logo-text { font-size: 1rem; }
+
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      .card { padding: 1.6rem 1.1rem 1.5rem; border-radius: 32px 16px 32px 16px; }
+      .icon { width: 68px; height: 68px; font-size: 26px; margin-bottom: 1rem; }
+      .card h2 { font-size: 1.1rem; }
+      .card p { font-size: 0.82rem; }
+
+      .page-footer { padding: 1rem; font-size: 0.78rem; border-radius: 30px; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 0.8rem; }
+      .header-card { padding: 1.4rem 1.1rem; }
+      .title h1 { font-size: 1.7rem; }
+      .title p { font-size: 0.65rem; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 1.4rem 1rem 1.3rem; }
+      .icon { width: 60px; height: 60px; font-size: 22px; }
+      .card h2 { font-size: 1rem; }
+      .logo-icon { width: 40px; height: 40px; border-radius: 12px; }
+      .logo-icon i { font-size: 17px; }
+      .logo-text { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER CARD ========== -->
+  <header class="header-card">
+    <a href="index.html" class="brand">
+      <div class="logo-icon">
+        <i class="fas fa-briefcase"></i>
+        <i class="fas fa-bolt fa-bolt"></i>
+      </div>
+      <span class="logo-text">SANDESH SHARMA</span>
+    </a>
+
+    <div class="title">
+      <h1>My Services</h1>
+      <p><i class="fas fa-star"></i> Professional IT &amp; Digital Solutions</p>
+    </div>
+  </header>
+
+  <!-- ========== SERVICE CARDS GRID ========== -->
+  <section class="grid">
+
+    <!-- card 1 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-laptop-code"></i></div>
+      <h2>Web Design</h2>
+      <p>Modern, responsive &amp; user-friendly websites using HTML, CSS, JavaScript and Bootstrap.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 2 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-globe"></i></div>
+      <h2>Web Development</h2>
+      <p>Fast, secure &amp; fully responsive websites with clean coding, modern UI and optimized performance.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 3 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-palette"></i></div>
+      <h2>Graphic Design</h2>
+      <p>Logo Design, Banner, Poster, Social Media Posts, Business Cards &amp; Creative Designs.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 4 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-chart-column"></i></div>
+      <h2>Tally Prime</h2>
+      <p>GST Billing, Accounting, Inventory Management and Professional Tally Prime Solutions.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 5 -->
+    <div class="card">
+      <div class="icon"><i class="fab fa-python"></i></div>
+      <h2>Programming</h2>
+      <p>Python, Java and C++ Programming with clean, efficient and beginner-friendly coding solutions.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 6 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-desktop"></i></div>
+      <h2>Computer Training</h2>
+      <p>ADCA, DCA, MS Office, Internet, Basic to Advanced Computer Training &amp; Support.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 7 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-database"></i></div>
+      <h2>Data Management</h2>
+      <p>Database handling, data entry, Excel automation, and efficient data organization solutions.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+    <!-- card 8 -->
+    <div class="card">
+      <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+      <h2>Digital Marketing</h2>
+      <p>Social media management, SEO basics, online presence strategy, and brand visibility.</p>
+      <span class="glow-line"></span>
+      <span class="shine"></span>
+    </div>
+
+  </section>
+
+  <!-- ========== PAGE FOOTER ========== -->
+  <footer class="page-footer">
+    <p>
+      <span class="heart"><i class="fas fa-heart"></i></span>
+      Made with Love · Created by <strong style="color:#3b1f7a;">Sandesh Sharma</strong>
+    </p>
+  </footer>
+
+</body>
+</html>

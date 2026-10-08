@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Contact Us · Sandesh Sharma</title>
+
+  <!-- ✅ FAVICON -->
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f8f0ff 0%, #f0e6ff 100%);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---------- MAIN GLASS CARD ---------- */
+    .glass-card {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 56px 40px 56px 40px;
+      padding: 2.2rem 2.4rem 2.4rem;
+      box-shadow: 0 30px 60px -15px rgba(90, 40, 140, 0.25),
+                  0 0 0 1px rgba(200, 170, 255, 0.25) inset;
+      border: 1px solid rgba(220, 200, 255, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(168, 132, 255, 0.18) 0%, transparent 70%);
+      top: -140px;
+      right: -120px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .glass-card::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(106, 61, 232, 0.12) 0%, transparent 70%);
+      bottom: -100px;
+      left: -80px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatOrb 16s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.15); }
+    }
+
+    .glass-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Animated logo icon */
+    .logo-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #6a3de8 0%, #a884ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 22px rgba(106, 61, 232, 0.35),
+                  0 0 0 3px rgba(255, 255, 255, 0.6) inset;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-icon:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .logo-icon i {
+      color: #fff;
+      font-size: 24px;
+      z-index: 2;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .logo-icon .fa-bolt {
+      position: absolute;
+      font-size: 11px !important;
+      color: #ffd700 !important;
+      top: 6px;
+      right: 6px;
+      z-index: 3;
+      filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8)) !important;
+      animation: zap 2s infinite;
+    }
+
+    @keyframes zap {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+
+    .subhead {
+      font-size: 0.88rem;
+      color: #5b3b9e;
+      margin: 0.6rem 0 1.8rem 0;
+      padding: 0.55rem 1.2rem;
+      background: #ede4ff;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-left: 5px solid #6a3de8;
+      font-weight: 600;
+    }
+
+    .subhead i { color: #6a3de8; }
+
+    .subhead strong {
+      color: #3b1f7a;
+      font-weight: 800;
+    }
+
+    /* ---------- FORM ---------- */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      color: #5b3b9e;
+      margin-bottom: 0.4rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding-left: 0.3rem;
+    }
+
+    label i {
+      color: #6a3de8;
+      font-size: 0.95rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.9rem 1.3rem;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px solid #d9c8ff;
+      border-radius: 26px;
+      outline: none;
+      transition: all 0.25s ease;
+      color: #2c1a4e;
+      font-weight: 500;
+      font-family: inherit;
+      box-shadow: 0 6px 14px -10px rgba(106, 61, 232, 0.25);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #a08cc4;
+      font-weight: 400;
+    }
+
+    input:hover,
+    textarea:hover {
+      border-color: #a884ff;
+      background: #fff;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #6a3de8;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(160, 120, 255, 0.18),
+                  0 8px 20px -10px rgba(106, 61, 232, 0.3);
+    }
+
+    textarea {
+      border-radius: 26px 26px 26px 26px;
+      resize: vertical;
+      min-height: 120px;
+      padding: 1rem 1.3rem;
+      line-height: 1.5;
+    }
+
+    /* ---------- BUTTON ---------- */
+    .btn-send {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #6a3de8, #a884ff);
+      border: none;
+      border-radius: 60px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.6rem;
+      box-shadow: 0 12px 28px -8px rgba(106, 61, 232, 0.5),
+                  0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+      letter-spacing: 0.5px;
+      font-family: inherit;
+      text-transform: uppercase;
+    }
+
+    .btn-send:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: linear-gradient(135deg, #5b2fd0, #9a70ff);
+      box-shadow: 0 20px 40px -12px rgba(106, 61, 232, 0.6),
+                  0 0 0 1.5px rgba(255, 255, 255, 0.25) inset;
+      letter-spacing: 2px;
+    }
+
+    .btn-send:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .btn-send:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ---------- STATUS MESSAGE ---------- */
+    #statusMessage {
+      margin-top: 1.5rem;
+      padding: 0.9rem 1.3rem;
+      border-radius: 60px;
+      background: #ede4ff;
+      border: 1.5px solid rgba(200, 170, 255, 0.4);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: 0.3s;
+      min-height: 3rem;
+      color: #5b3b9e;
+      font-size: 0.9rem;
+    }
+
+    #statusMessage i {
+      color: #6a3de8;
+      font-size: 1.05rem;
+    }
+
+    .success {
+      color: #059669;
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .success i { color: #059669; }
+
+    .error {
+      color: #dc2626;
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.35);
+    }
+
+    .error i { color: #dc2626; }
+
+    .info {
+      color: #5b3b9e;
+      background: #ede4ff;
+      border-color: rgba(200, 170, 255, 0.4);
+    }
+
+    .info i { color: #6a3de8; }
+
+    /* ---------- FOOTER CHIPS ---------- */
+    .footer-note {
+      margin-top: 2rem;
+      padding-top: 1.4rem;
+      border-top: 2px dashed rgba(160, 130, 255, 0.25);
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-note span {
+      background: #ede4ff;
+      padding: 0.4rem 1.1rem;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #5b3b9e;
+      font-size: 0.75rem;
+      letter-spacing: 0.3px;
+      border: 1.5px solid rgba(200, 170, 255, 0.4);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .footer-note span i { color: #6a3de8; }
+
+    .footer-note span:hover {
+      background: linear-gradient(135deg, #6a3de8, #a884ff);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px -8px rgba(106, 61, 232, 0.5);
+      border-color: transparent;
+    }
+
+    .footer-note span:hover i { color: #fff; }
+
+    /* ---------- FOOTER ---------- */
+    .page-footer {
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      padding: 1.2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 40px;
+      border: 1px solid rgba(220, 200, 255, 0.4);
+      box-shadow: 0 12px 28px -10px rgba(80, 40, 160, 0.1);
+      margin-top: 1.5rem;
+      color: #7a5fa8;
+      font-size: 0.85rem;
+    }
+
+    .page-footer .heart {
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+      color: #ef4444;
+    }
+
+    .page-footer i { color: #6a3de8; }
+    .page-footer .heart i { color: #ef4444; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 520px) {
+      body { padding: 1rem; }
+
+      .glass-card {
+        padding: 1.6rem 1.4rem 1.8rem;
+        border-radius: 40px 28px 40px 28px;
+      }
+
+      .header h1 { font-size: 1.5rem; }
+      .subhead { font-size: 0.78rem; padding: 0.45rem 1rem; }
+      .logo-icon { width: 46px; height: 46px; border-radius: 14px; }
+      .logo-icon i { font-size: 20px; }
+
+      input, textarea { font-size: 0.92rem; padding: 0.8rem 1.1rem; }
+      .btn-send { font-size: 0.95rem; padding: 0.9rem 1.2rem; }
+      .footer-note span { font-size: 0.68rem; padding: 0.35rem 0.9rem; }
+      .page-footer { padding: 1rem; font-size: 0.78rem; }
+    }
+
+    @media (max-width: 380px) {
+      .header h1 { font-size: 1.3rem; }
+      .glass-card { padding: 1.3rem 1rem 1.5rem; }
+      label { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-icon">
+        <i class="fas fa-paper-plane"></i>
+        <i class="fas fa-bolt fa-bolt"></i>
+      </div>
+      <h1>Contact Us</h1>
+    </div>
+
+    <div class="subhead">
+      <i class="fas fa-user"></i>
+      Anyone can send an email <strong>directly to me</strong>
+    </div>
+
+    <!-- Form -->
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="user_name"><i class="fas fa-user"></i> Your Name</label>
+        <input type="text" id="user_name" name="user_name" placeholder="e.g. Rahul, Priya ..." required>
+      </div>
+
+      <div class="form-group">
+        <label for="user_email"><i class="fas fa-envelope"></i> Your Email</label>
+        <input type="email" id="user_email" name="user_email" placeholder="Your email (for reply)" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message"><i class="fas fa-comment-dots"></i> Message</label>
+        <textarea id="message" name="message" placeholder="What would you like to say..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-send" id="sendBtn">
+        <i class="fas fa-rocket"></i> Send Email
+      </button>
+    </form>
+
+    <!-- Status -->
+    <div id="statusMessage" class="info">
+      <i class="fas fa-lightbulb"></i>
+      <span>Fill the form and click "Send Email"</span>
+    </div>
+
+    <!-- Footer chips -->
+    <div class="footer-note">
+      <span><i class="fas fa-bolt"></i> Create By Sandesh</span>
+      <span><i class="fas fa-palette"></i> Colorful</span>
+      <span><i class="fas fa-paper-plane"></i> Instant</span>
+    </div>
+  </div>
+
+  <!-- Page footer -->
+  <footer class="page-footer">
+    <p>
+      <span class="heart"><i class="fas fa-heart"></i></span>
+      Made with Love · Created by <strong style="color:#3b1f7a;">Sandesh Sharma</strong>
+    </p>
+  </footer>
+
+  <script>
+    (function() {
+      // 🔑 Your Credentials
+      const YOUR_PUBLIC_KEY = 'K8qpqTNNYIJgN0mVX';
+      const YOUR_SERVICE_ID = 'service_xcdnao8';
+      const YOUR_TEMPLATE_ID = 'template_eqdmuf9';
+
+      // EmailJS Initialize
+      emailjs.init(YOUR_PUBLIC_KEY);
+      console.log('✅ EmailJS initialized');
+
+      const form = document.getElementById('contactForm');
+      const statusDiv = document.getElementById('statusMessage');
+      const sendBtn = document.getElementById('sendBtn');
+
+      function setStatus(type, msg, iconClass = 'fas fa-info-circle') {
+        statusDiv.innerHTML = `<i class="${iconClass}"></i> <span>${msg}</span>`;
+        statusDiv.className = '';
+        if (type) statusDiv.classList.add(type);
+      }
+
+      setStatus('info', 'Fill the form and click "Send Email"', 'fas fa-lightbulb');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+
+        const name = document.getElementById('user_name').value.trim();
+        const email = document.getElementById('user_email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !message) {
+          setStatus('error', 'Please fill in all fields', 'fas fa-exclamation-circle');
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = `<i class="fas fa-rocket"></i> Send Email`;
+          return;
+        }
+
+        const templateParams = {
+          user_name: name,
+          user_email: email,
+          message: message,
+          subject: '📧 New message from ' + name
+        };
+
+        console.log('📤 Sending:', templateParams);
+
+        emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams)
+          .then(function(response) {
+            console.log('✅ Success:', response);
+            setStatus('success', 'Your message has been sent successfully!', 'fas fa-check-circle');
+            form.reset();
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = `<i class="fas fa-rocket"></i> Send Email`;
+
+            setTimeout(() => {
+              if (statusDiv.classList.contains('success')) {
+                setStatus('info', 'Fill the form again to send another', 'fas fa-lightbulb');
+              }
+            }, 6000);
+          })
+          .catch(function(error) {
+            console.error('❌ Error:', error);
+            let errorMsg = 'Failed to send email.';
+            if (error.text) errorMsg += ' ' + error.text;
+            setStatus('error', errorMsg, 'fas fa-exclamation-circle');
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = `<i class="fas fa-rocket"></i> Send Email`;
+          });
+      });
+    })();
+  </script>
+
+</body>
+</html>

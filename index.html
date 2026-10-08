@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Sandesh Sharma · Portfolio</title>
+
+  <!-- ✅ FAVICON -->
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f8f0ff 0%, #f0e6ff 100%);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---------- MAIN GLASS CARD ---------- */
+    .glass-card {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 56px 40px 56px 40px;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 30px 60px -15px rgba(90, 40, 140, 0.25),
+                  0 0 0 1px rgba(200, 170, 255, 0.25) inset;
+      border: 1px solid rgba(220, 200, 255, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(168, 132, 255, 0.18) 0%, transparent 70%);
+      top: -140px;
+      right: -120px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .glass-card::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(106, 61, 232, 0.12) 0%, transparent 70%);
+      bottom: -100px;
+      left: -80px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatOrb 16s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.15); }
+    }
+
+    .glass-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(200, 170, 255, 0.25);
+      padding-bottom: 1.2rem;
+      gap: 0.8rem;
+    }
+
+    /* ---------- ANIMATED LOGO ---------- */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #6a3de8 0%, #a884ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 22px rgba(106, 61, 232, 0.35),
+                  0 0 0 3px rgba(255, 255, 255, 0.6) inset;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .logo-icon i {
+      color: #fff;
+      font-size: 22px;
+      z-index: 2;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .logo-icon .fa-bolt {
+      position: absolute;
+      font-size: 10px !important;
+      color: #ffd700 !important;
+      top: 6px;
+      right: 6px;
+      z-index: 3;
+      filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8)) !important;
+      animation: zap 2s infinite;
+    }
+
+    @keyframes zap {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+
+    .logo:hover .logo-text {
+      filter: drop-shadow(0 0 12px rgba(106, 61, 232, 0.4));
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      color: #6a3de8;
+      cursor: pointer;
+      transition: 0.2s;
+      padding: 0.4rem 0.6rem;
+      border-radius: 12px;
+    }
+
+    .hamburger:hover {
+      background: #ede4ff;
+      transform: rotate(6deg);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #5b3b9e;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      position: relative;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      transition: 0.3s ease;
+      border: 1.5px solid transparent;
+    }
+
+    nav a:hover {
+      background: #ede4ff;
+      border-color: #d9c8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 61, 232, 0.15);
+    }
+
+    nav a.active {
+      background: linear-gradient(135deg, #6a3de8, #a884ff);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(106, 61, 232, 0.35);
+    }
+
+    /* ---------- HOME SECTION ---------- */
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .home-img {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: 0.4s ease;
+    }
+
+    .home-img::before {
+      content: '';
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      background: radial-gradient(circle, rgba(168, 132, 255, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .home-img img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 40% 20% 40% 20% / 30% 40% 20% 40%;
+      background: linear-gradient(145deg, #ede4ff, #d9c8ff);
+      padding: 0.6rem;
+      border: 2px solid rgba(168, 132, 255, 0.4);
+      box-shadow: 0 20px 40px -12px rgba(106, 61, 232, 0.35);
+      transition: 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      object-fit: cover;
+    }
+
+    .home-img img:hover {
+      transform: scale(1.03) rotate(1.2deg);
+      border-color: #6a3de8;
+      box-shadow: 0 30px 60px -15px rgba(106, 61, 232, 0.5),
+                  0 0 50px rgba(168, 132, 255, 0.4);
+      filter: brightness(1.05);
+    }
+
+    .home-content {
+      flex: 2 1 460px;
+    }
+
+    .home-content .greeting {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ede4ff;
+      color: #5b3b9e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.35rem 1rem;
+      border-radius: 60px;
+      margin-bottom: 0.8rem;
+    }
+
+    .home-content .greeting i { color: #6a3de8; }
+
+    .home-content h1 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      color: #2c1a4e;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.3rem;
+      line-height: 1.1;
+    }
+
+    .home-content h1 span {
+      background: linear-gradient(135deg, #6a3de8, #a884ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 40px rgba(168, 132, 255, 0.3);
+    }
+
+    .typing-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #7a5fa8;
+      margin: 0.4rem 0 1rem 0;
+      min-height: 2.2rem;
+    }
+
+    #typing {
+      background: linear-gradient(135deg, #3b1f7a, #7b4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      border-right: 3px solid #6a3de8;
+      padding-right: 4px;
+      animation: blinkCursor 0.8s step-end infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { border-color: #6a3de8; }
+      50% { border-color: transparent; }
+    }
+
+    .home-content p {
+      color: #5b3b9e;
+      line-height: 1.7;
+      font-size: 0.98rem;
+      margin: 1.2rem 0 1.8rem 0;
+      background: rgba(237, 228, 255, 0.5);
+      padding: 1.2rem 1.6rem;
+      border-radius: 28px 12px 28px 12px;
+      border-left: 4px solid #6a3de8;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 8px 20px -10px rgba(106, 61, 232, 0.2);
+      transition: 0.3s;
+    }
+
+    .home-content p:hover {
+      border-left-width: 8px;
+      background: rgba(237, 228, 255, 0.75);
+      box-shadow: 0 0 30px rgba(106, 61, 232, 0.15);
+      transform: scale(1.01);
+    }
+
+    /* ---------- SOCIAL ICONS ---------- */
+    .social-icons {
+      display: flex;
+      gap: 0.9rem;
+      margin: 1.5rem 0 1.8rem 0;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      background: rgba(237, 228, 255, 0.7);
+      border: 1.5px solid rgba(200, 170, 255, 0.4);
+      color: #5b3b9e;
+      font-size: 1.5rem;
+      transition: 0.3s ease;
+      backdrop-filter: blur(4px);
+      text-decoration: none;
+      box-shadow: 0 6px 16px -8px rgba(106, 61, 232, 0.25);
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-8px) rotate(4deg) scale(1.08);
+      border-color: #a884ff;
+      background: #ede4ff;
+      box-shadow: 0 0 30px rgba(106, 61, 232, 0.4),
+                  0 8px 20px -8px rgba(106, 61, 232, 0.3);
+    }
+
+    .social-icons a:nth-child(1):hover { color: #0a66c2; border-color: #0a66c2; }
+    .social-icons a:nth-child(2):hover { color: #24292e; border-color: #24292e; }
+    .social-icons a:nth-child(3):hover { color: #26a5e4; border-color: #26a5e4; }
+    .social-icons a:nth-child(4):hover { color: #e4405f; border-color: #e4405f; }
+
+    /* ---------- BUTTON ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #6a3de8, #a884ff);
+      color: #fff;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 12px 28px -8px rgba(106, 61, 232, 0.5),
+                  0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      background: linear-gradient(135deg, #5b2fd0, #9a70ff);
+      box-shadow: 0 20px 40px -12px rgba(106, 61, 232, 0.6),
+                  0 0 0 1.5px rgba(255, 255, 255, 0.25) inset;
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      width: 100%;
+      margin-top: 2rem;
+      text-align: center;
+      padding: 1.4rem 1.5rem;
+      background: rgba(237, 228, 255, 0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 40px;
+      border: 1px solid rgba(220, 200, 255, 0.5);
+      box-shadow: 0 12px 28px -10px rgba(80, 40, 160, 0.1);
+      color: #7a5fa8;
+      font-weight: 400;
+      font-size: 0.88rem;
+    }
+
+    .footer i { color: #6a3de8; }
+
+    .footer .heart {
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+      color: #ef4444;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 880px) {
+      .glass-card {
+        padding: 1.6rem 1.4rem;
+        border-radius: 40px 24px 40px 24px;
+      }
+
+      header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+        gap: 0.6rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 28px 12px 28px 12px;
+        padding: 1.2rem 1rem;
+        border: 1px solid rgba(200, 170, 255, 0.4);
+        box-shadow: 0 20px 40px -15px rgba(90, 40, 140, 0.3);
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 0;
+        font-size: 1rem;
+      }
+
+      .home {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .home-img img {
+        max-width: 260px;
+      }
+
+      .home-content h1 {
+        font-size: 2rem;
+      }
+
+      .typing-text {
+        font-size: 1.2rem;
+        min-height: 1.8rem;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+      }
+
+      .home-content .greeting {
+        font-size: 0.68rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 0.8rem; }
+
+      .glass-card {
+        padding: 1.2rem 1rem;
+        border-radius: 32px 20px 32px 20px;
+      }
+
+      .logo-text { font-size: 1rem; }
+      .logo-icon { width: 42px; height: 42px; border-radius: 13px; }
+      .logo-icon i { font-size: 18px; }
+
+      .home-content h1 { font-size: 1.7rem; }
+
+      .home-content p {
+        padding: 0.9rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .social-icons a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+      }
+
+      .footer { padding: 1rem; font-size: 0.78rem; }
+    }
+
+    /* hamburger toggle */
+    .hamburger.active i {
+      transform: rotate(90deg);
+      color: #a884ff;
+    }
+
+    .hamburger.active {
+      background: #ede4ff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="glass-card">
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-code"></i>
+        <i class="fas fa-bolt fa-bolt"></i>
+      </div>
+      <span class="logo-text">SANDESH SHARMA</span>
+    </a>
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="navbar">
+      <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+      <a href="service.html"><i class="fas fa-cog"></i> Services</a>
+      <a href="skills.html"><i class="fas fa-star"></i> Skills</a>
+      <a href="contect.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </header>
+
+  <section class="home">
+    <div class="home-img">
+      <img src="main.png" alt="Sandesh Sharma" />
+    </div>
+    <div class="home-content">
+      <span class="greeting">
+        <i class="fas fa-hand-sparkles"></i> Welcome to my portfolio
+      </span>
+      <h1>Hi, It's <span>Sandesh</span></h1>
+      <h3 class="typing-text">I'm a <span id="typing"></span></h3>
+      <p>
+        Hi, I'm Sandesh Sharma, a passionate and dedicated professional committed to creating impactful digital experiences. I enjoy learning new technologies, solving real-world problems, and continuously improving my skills. <br /><br />
+        My portfolio showcases my projects, technical expertise, and achievements. I believe in writing clean, efficient code, delivering high-quality work, and embracing challenges that help me grow both personally and professionally. <br /><br />
+        Thank you for visiting my portfolio. Feel free to explore my work, and don't hesitate to get in touch if you'd like to collaborate or discuss new opportunities.
+      </p>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/sandesh-sharma-495177366" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://t.me/sandesh9169" target="_blank" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://www.instagram.com/the_sandesh_sharma?igsh=MWhiYTlnY3h0anpwNQ==" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <a href="resume.html" class="btn">
+        <i class="fas fa-file-alt"></i> My Resume
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      <i class="fas fa-heart heart"></i>
+      Made with Love · Created by <strong style="color:#3b1f7a;">Sandesh Sharma</strong>
+      <i class="fas fa-heart heart"></i>
+    </p>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // ----- typing effect (multi-role) -----
+    const typingSpan = document.getElementById('typing');
+    if (typingSpan) {
+      const roles = ['Web Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Creative Thinker'];
+      let roleIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let currentText = '';
+
+      function typeEffect() {
+        const fullText = roles[roleIndex];
+        if (isDeleting) {
+          currentText = fullText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          currentText = fullText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        typingSpan.textContent = currentText;
+
+        let speed = isDeleting ? 70 : 120;
+
+        if (!isDeleting && charIndex === fullText.length) {
+          speed = 1800;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          speed = 400;
+        }
+
+        setTimeout(typeEffect, speed);
+      }
+
+      typeEffect();
+    }
+
+    // ----- hamburger toggle -----
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+
+    if (hamburger && navbar) {
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navbar.classList.toggle('show');
+        hamburger.classList.toggle('active');
+        const icon = hamburger.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        }
+      });
+
+      navbar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          navbar.classList.remove('show');
+          hamburger.classList.remove('active');
+          const icon = hamburger.querySelector('i');
+          if (icon) {
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!navbar.contains(e.target) && !hamburger.contains(e.target)) {
+          navbar.classList.remove('show');
+          hamburger.classList.remove('active');
+          const icon = hamburger.querySelector('i');
+          if (icon) {
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
